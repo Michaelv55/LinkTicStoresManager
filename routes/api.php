@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/unauthenticated', function(Request $request){
+    return response([
+        'message' => 'Api Token no válido.',
+        'code' => 401
+    ], 401);
+})->name('api-unauthenticated');
