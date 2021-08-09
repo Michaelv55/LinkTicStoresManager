@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->prefix('store')->group(function(){
-    Route::get('/products/{store}', 'StoreController@show');
+    Route::get('/products/{store}', 'StoreController@showProducts');
 });
 
 Route::get('/unauthenticated', function(Request $request){

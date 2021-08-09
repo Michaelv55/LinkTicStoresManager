@@ -12,10 +12,12 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = [
-            'storesData' => Store::paginate()
+            'storesData' => Store::paginate(),
+            'errorMessage' => $request->errorMessage,
+            'successMessage' => $request->successMessage,
         ];
         return view('stores.index', $data);
     }
@@ -51,6 +53,10 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
+        dd($store->product);
+    }
+
+    public function showProducts(Store $store){
         return $store->products;
     }
 
@@ -74,6 +80,14 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        try {
+            $delete = $store->delete();
+        } catch (\Throwable $th) {
+            $delete = false;
+        }
+        return redirect()->route('stores', [
+            'errorMessage' => (!$delete) ? 'No se pudo eliminar': '',
+            'successMessage' => ($delete) ? 'Eliminado correctamente': ''
+        ]);
     }
 }

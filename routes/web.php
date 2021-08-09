@@ -23,3 +23,7 @@ Route::get('/stores/create', [\App\Http\Controllers\StoreController::class, 'cre
     ->name('stores-create');
 Route::post('/stores/store', [\App\Http\Controllers\StoreController::class, 'store'])
     ->name('stores-store');
+Route::delete('/stores/destroy/{store}', [\App\Http\Controllers\StoreController::class, 'destroy'])
+    ->name('stores-destroy');
+Route::delete('/stores/edit/{store}', [\App\Http\Controllers\StoreController::class, 'edit'])
+    ->name('stores-edit');
