@@ -23,7 +23,7 @@ class StoreFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'opening_date' => $this->faker->dateTime(),
+            'opening_date' => $this->faker->date(),
         ];
     }
 }
