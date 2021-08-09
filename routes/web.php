@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('master');
+    return redirect('stores');
 });
+
+Route::get('/stores', [\App\Http\Controllers\StoreController::class, 'index'])
+    ->name('stores');
+Route::get('/stores/create', [\App\Http\Controllers\StoreController::class, 'create'])
+    ->name('stores-create');

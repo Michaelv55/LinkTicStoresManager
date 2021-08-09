@@ -14,7 +14,17 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        return view('stores.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('stores.create');
     }
 
     /**
