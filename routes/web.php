@@ -21,3 +21,5 @@ Route::get('/stores', [\App\Http\Controllers\StoreController::class, 'index'])
     ->name('stores');
 Route::get('/stores/create', [\App\Http\Controllers\StoreController::class, 'create'])
     ->name('stores-create');
+Route::post('/stores/store', [\App\Http\Controllers\StoreController::class, 'store'])
+    ->name('stores-store');

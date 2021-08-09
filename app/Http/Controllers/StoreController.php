@@ -14,7 +14,10 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('stores.index');
+        $data = [
+            'storesData' => Store::paginate()
+        ];
+        return view('stores.index', $data);
     }
 
     /**
@@ -35,7 +38,9 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newStore = new Store($request->only(['name', 'opening_date']));
+        $newStore->save();
+        return redirect('stores');
     }
 
     /**
